@@ -21,6 +21,7 @@
       cursor: pointer;
       border-radius: 10px;
       border: none;
+      transition: 0.2s;
     }
 
     #yesBtn {
@@ -47,13 +48,14 @@
 
   <div>
     <button id="yesBtn" onclick="yesClick()">Yes 💖</button>
-    <button id="noBtn" onclick="noClick()">No 💔</button>
+    <button id="noBtn" onmouseover="trickNo()">No 💔</button>
   </div>
 
   <script>
     function yesClick() {
       document.getElementById("question").textContent = "YAY!!! 💕";
-      document.getElementById("image").src = "https://image.koreaboo.com/2026/01/su-been-925x520.jpg";
+      document.getElementById("image").src =
+        "https://via.placeholder.com/300x300?text=PUT+YOUR+IMAGE+URL+HERE";
       document.getElementById("yesBtn").style.display = "none";
       document.getElementById("noBtn").style.display = "none";
     }
@@ -61,9 +63,17 @@
     function noClick() {
       document.body.style.background = "#333";
       document.getElementById("question").textContent = "Wow. You stink. 😤";
-      document.getElementById("image").src = "https://via.placeholder.com/300x300?text=YOU+STINK";
+      document.getElementById("image").src =
+        "https://via.placeholder.com/300x300?text=YOU+STINK";
       document.getElementById("yesBtn").style.display = "none";
       document.getElementById("noBtn").style.display = "none";
+    }
+
+    function trickNo() {
+      const noBtn = document.getElementById("noBtn");
+      noBtn.textContent = "Yes 💖";
+      noBtn.style.backgroundColor = "#ff4d6d";
+      noBtn.onclick = yesClick;
     }
   </script>
 
