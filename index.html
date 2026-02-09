@@ -46,33 +46,49 @@
 
   <div>
     <button id="yesBtn" onclick="yesClick()">Yes 💖</button>
-    <button id="noBtn" onmouseover="trickNo()">No 💔</button>
+    <button id="noBtn">No 💩</button>
   </div>
 
   <script>
+    const noBtn = document.getElementById("noBtn");
+
     function yesClick() {
       document.getElementById("question").textContent = "YAY!!! 💕";
       document.getElementById("image").src =
-        "https://via.placeholder.com/300x300?text=PUT+YOUR+IMAGE+URL+HERE";
+        "https://image.koreaboo.com/2026/01/su-been-925x520.jpg";
       document.getElementById("yesBtn").style.display = "none";
-      document.getElementById("noBtn").style.display = "none";
+      noBtn.style.display = "none";
     }
 
     function noClick() {
       document.body.style.background = "#333";
-      document.getElementById("question").textContent = "Wow. You stink. 😤";
+      document.getElementById("question").textContent = "Wow. Somehow you clicked on this. You stink. 😤";
       document.getElementById("image").src =
         "https://via.placeholder.com/300x300?text=YOU+STINK";
       document.getElementById("yesBtn").style.display = "none";
-      document.getElementById("noBtn").style.display = "none";
+      noBtn.style.display = "none";
     }
 
     function trickNo() {
-      const noBtn = document.getElementById("noBtn");
       noBtn.textContent = "Yes 💖";
       noBtn.style.backgroundColor = "#ff4d6d";
       noBtn.onclick = yesClick;
     }
+
+    function revertNo() {
+      noBtn.textContent = "No 💔";
+      noBtn.style.backgroundColor = "#666";
+      noBtn.onclick = noClick;
+    }
+
+    // Mouse enters the No button → turn into Yes
+    noBtn.addEventListener("mouseenter", trickNo);
+
+    // Mouse leaves the No button → revert back to No
+    noBtn.addEventListener("mouseleave", revertNo);
+
+    // Initialize the No button click
+    noBtn.onclick = noClick;
   </script>
 
 </body>
