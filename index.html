@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Joke Site</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>😂 Random Joke Generator</h1>
+  <p id="joke">Click the button for a joke.</p>
+  <button onclick="newJoke()">New Joke</button>
+
+  <script>
+    const jokes = [
+      "Why don’t programmers like nature? Too many bugs.",
+      "Why did the computer get cold? It forgot to close its Windows.",
+      "I told my computer I needed a break… it froze.",
+      "Why do Java developers wear glasses? Because they don’t C#.",
+      "Debugging: Being the detective in a crime movie where you are also the murderer."
+    ];
+
+    function newJoke() {
+      const j = jokes[Math.floor(Math.random() * jokes.length)];
+      document.getElementById("joke").textContent = j;
+    }
+  </script>
+</body>
+</html>
