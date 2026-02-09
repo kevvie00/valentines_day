@@ -1,42 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Joke Site</title>
+  <title>Be My Valentine?</title>
   <style>
     body {
-      background: #111;
-      color: white;
+      background: pink;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 50px;
     }
+
+    h1 {
+      font-size: 48px;
+    }
+
     button {
-      font-size: 20px;
-      padding: 10px 20px;
+      font-size: 24px;
+      padding: 10px 25px;
+      margin: 20px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 10px;
       border: none;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #666;
+      color: white;
+    }
+
+    img {
+      width: 300px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>😂 Random Joke Generator</h1>
-  <p id="joke">Click the button for a joke.</p>
-  <button onclick="newJoke()">New Joke</button>
+
+  <h1 id="question">Will you be my Valentine? 💘</h1>
+
+  <img id="image" src="https://via.placeholder.com/300x300?text=Valentine" />
+
+  <div>
+    <button id="yesBtn" onclick="yesClick()">Yes 💖</button>
+    <button id="noBtn" onclick="noClick()">No 💔</button>
+  </div>
 
   <script>
-    const jokes = [
-      "Why don’t programmers like nature? Too many bugs.",
-      "Why did the computer get cold? It forgot to close its Windows.",
-      "I told my computer I needed a break… it froze.",
-      "Why do Java developers wear glasses? Because they don’t C#.",
-      "Debugging: Being the detective in a crime movie where you are also the murderer."
-    ];
+    function yesClick() {
+      document.getElementById("question").textContent = "YAY!!! 💕";
+      document.getElementById("image").src = "https://image.koreaboo.com/2026/01/su-been-925x520.jpg";
+      document.getElementById("yesBtn").style.display = "none";
+      document.getElementById("noBtn").style.display = "none";
+    }
 
-    function newJoke() {
-      const j = jokes[Math.floor(Math.random() * jokes.length)];
-      document.getElementById("joke").textContent = j;
+    function noClick() {
+      document.body.style.background = "#333";
+      document.getElementById("question").textContent = "Wow. You stink. 😤";
+      document.getElementById("image").src = "https://via.placeholder.com/300x300?text=YOU+STINK";
+      document.getElementById("yesBtn").style.display = "none";
+      document.getElementById("noBtn").style.display = "none";
     }
   </script>
+
 </body>
 </html>
