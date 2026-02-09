@@ -1,3 +1,5 @@
+<!-- If you are reading my AI-generated code then you stink. -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,35 +40,50 @@
       width: 300px;
       margin-top: 20px;
     }
+
+    #counter {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
 
   <h1 id="question">Will you be my Valentine? 💘</h1>
 
+  <img id="image" src="" />
+
   <div>
     <button id="yesBtn" onclick="yesClick()">Yes 💖</button>
-    <button id="noBtn">No 💩</button>
+    <button id="noBtn">No 💔</button>
   </div>
+
+  <p id="counter">No button reverted 0 times</p>
 
   <script>
     const noBtn = document.getElementById("noBtn");
+    const counterEl = document.getElementById("counter");
+    const imageEl = document.getElementById("image");
+    let revertCount = 0;
+
+    const emojis = ["💔", "😠", "😡", "🤬"]; // No button emojis
 
     function yesClick() {
       document.getElementById("question").textContent = "YAY!!! 💕";
-      document.getElementById("image").src =
-        "https://image.koreaboo.com/2026/01/su-been-925x520.jpg";
+      imageEl.src = "https://image.koreaboo.com/2026/01/su-been-925x520.jpg";
       document.getElementById("yesBtn").style.display = "none";
       noBtn.style.display = "none";
+      counterEl.style.display = "none";
     }
 
     function noClick() {
       document.body.style.background = "#333";
-      document.getElementById("question").textContent = "Wow. Somehow you clicked on this. You stink. 😤";
-      document.getElementById("image").src =
-        "https://via.placeholder.com/300x300?text=YOU+STINK";
+      document.getElementById("question").textContent = "Wow. You stink. 😤";
+      imageEl.src = "";
       document.getElementById("yesBtn").style.display = "none";
       noBtn.style.display = "none";
+      counterEl.style.display = "none";
     }
 
     function trickNo() {
@@ -76,18 +93,15 @@
     }
 
     function revertNo() {
-      noBtn.textContent = "No 💔";
+      revertCount++;
+      let emojiIndex = Math.min(revertCount - 1, emojis.length - 1);
+      noBtn.textContent = "No " + emojis[emojiIndex];
       noBtn.style.backgroundColor = "#666";
       noBtn.onclick = noClick;
     }
 
-    // Mouse enters the No button → turn into Yes
     noBtn.addEventListener("mouseenter", trickNo);
-
-    // Mouse leaves the No button → revert back to No
     noBtn.addEventListener("mouseleave", revertNo);
-
-    // Initialize the No button click
     noBtn.onclick = noClick;
   </script>
 
